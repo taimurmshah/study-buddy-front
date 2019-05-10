@@ -4,3 +4,10 @@ export const getSessions = sessions => {
     payload: sessions
   };
 };
+
+export const incrementProblems = number => {
+  return {
+    type: "INCREMENT_PROBLEMS",
+    payload: number
+  };
+};
