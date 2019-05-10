@@ -1,8 +1,10 @@
-import React from "react";
-import "./App.css";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-function App() {
-  return <div>Yeo</div>;
+class App extends Component {
+  render() {
+    return <div>YER</div>;
+  }
 }
 
 export default App;
