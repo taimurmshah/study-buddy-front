@@ -11,3 +11,10 @@ export const incrementProblems = number => {
     payload: number
   };
 };
+
+export const addTime = time => {
+  return {
+    type: "ADD_TIME",
+    payload: time
+  };
+};

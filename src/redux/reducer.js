@@ -2,7 +2,7 @@ const initialState = {
   sessions: {},
   currentSession: {},
   title: "",
-  hours: "00:00:00",
+  hours: 0,
   job: false,
   problems: 0,
   id: null
@@ -23,6 +23,8 @@ const reducer = (state = initialState, action) => {
       };
     case "INCREMENT_PROBLEMS":
       return { ...state, problems: action.payload };
+    case "ADD_TIME":
+      return { ...state, hours: action.payload };
     default:
       return state;
   }

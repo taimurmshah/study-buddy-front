@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import formatDuration from "format-duration";
 import { Button } from "semantic-ui-react";
+import { patchHours } from "../redux/thunks";
 
 class Timer extends Component {
   componentDidMount() {
@@ -10,18 +11,12 @@ class Timer extends Component {
 
   componentWillUnmount() {
     clearInterval();
+    this.props.patchHours(this.props.id, this.state.time);
   }
 
   state = {
-    timer: false,
     time: 0
   };
-
-  buttonClick = () => {
-    this.setState({ timer: !this.state.timer });
-  };
-
-  keepTime = () => {};
 
   render() {
     return (
@@ -32,4 +27,19 @@ class Timer extends Component {
   }
 }
 
-export default connect()(Timer);
+const mapStateToProps = state => {
+  return {
+    id: state.id
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    patchHours: (id, hours) => dispatch(patchHours(id, hours))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Timer);
