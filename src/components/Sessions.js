@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { selectSession } from "../redux/actions";
 // import { withRouter } from "react-router-dom";
+import { fetchDays } from "../redux/thunks";
 
 class Sessions extends Component {
   clickHandler = e => {
@@ -10,6 +11,7 @@ class Sessions extends Component {
       return session.id === id;
     });
     this.props.selectSession(session);
+    this.props.fetchDays(id);
   };
 
   render() {
@@ -37,7 +39,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    selectSession: session => dispatch(selectSession(session))
+    selectSession: session => dispatch(selectSession(session)),
+    fetchDays: id => dispatch(fetchDays(id))
   };
 };
 

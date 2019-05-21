@@ -1,3 +1,8 @@
+let today = new Date().toDateString().split(" ");
+today.shift();
+today[1] = today[1] + ",";
+let date = today.join(" ");
+
 const initialState = {
   sessions: [],
   currentSession: {},
@@ -5,16 +10,15 @@ const initialState = {
   hours: 0,
   job: false,
   problems: 0,
-  id: null
+  id: null,
+  date: date,
+  days: [],
+  sessionToday: {}
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "GET_SESSIONS":
-      // let session = action.payload.find(
-      //   // session => session.title === "Interview Prep 2019"
-      //   session => session.title === "Test"
-      // );
       return {
         ...state,
         sessions: action.payload
@@ -31,6 +35,12 @@ const reducer = (state = initialState, action) => {
         hours: action.payload.hours,
         problems: action.payload.problems,
         id: action.payload.id
+      };
+    case "GET_DAYS":
+      return {
+        ...state,
+        days: action.payload,
+        date: action.payload[action.payload.length - 1].date
       };
     default:
       return state;

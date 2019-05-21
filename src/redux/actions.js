@@ -25,3 +25,10 @@ export const selectSession = id => {
     payload: id
   };
 };
+
+export const getDays = days => {
+  return {
+    type: "GET_DAYS",
+    payload: days
+  };
+};

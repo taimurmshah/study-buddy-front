@@ -11,7 +11,7 @@ class Problems extends Component {
     return (
       <div>
         <h3>Number of Problems Completed: {this.props.problems} </h3>
-        <button onClick={this.buttonHandler}>plus</button>
+        <button onClick={this.buttonHandler}> +1</button>
       </div>
     );
   }
