@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Button, Icon } from "semantic-ui-react";
 import { patchProblems } from "../redux/thunks";
 
 class Problems extends Component {
@@ -12,9 +11,7 @@ class Problems extends Component {
     return (
       <div>
         <h3>Number of Problems Completed: {this.props.problems} </h3>
-        <Button icon size="mini" onClick={this.buttonHandler}>
-          <Icon name="plus" />
-        </Button>
+        <button onClick={this.buttonHandler}>plus</button>
       </div>
     );
   }

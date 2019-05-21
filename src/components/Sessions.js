@@ -9,7 +9,6 @@ class Sessions extends Component {
     let session = this.props.sessions.find(session => {
       return session.id === id;
     });
-    console.log("here's the session:", session);
     this.props.selectSession(session);
   };
 
@@ -23,7 +22,7 @@ class Sessions extends Component {
     });
     return (
       <div>
-        <h1>Choose Sessions</h1>
+        <h1>Select a Session</h1>
         <ul className="list">{sessions}</ul>
       </div>
     );

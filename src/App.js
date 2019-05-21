@@ -14,6 +14,12 @@ class App extends Component {
   render() {
     return (
       <div>
+        <header id="main-header">
+          <div className="container">
+            <h1>Study Buddy</h1>
+          </div>
+        </header>
+
         {this.props.sessions.length > 0 ? (
           Object.keys(this.props.currentSession).length > 0 ? (
             <MainContainer />

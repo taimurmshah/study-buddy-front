@@ -1,14 +1,24 @@
-/* * {
-  margin: 0;
-  padding: 0;
-} */
-
 body {
-  background-image: url("./images/background.png");
+  background-image: url("./images/gravel.png");
   /* background-repeat: no-repeat; */
   background-attachment: fixed;
 
-  color: #fff;
+  color: #555;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.6em;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden; /*the fuck does this do? "no scroll bars even if something goes outside of its container"*/
+}
+
+#main-header {
+  background-image: url("./images/green_cup.png");
+  color: #555;
+  margin-bottom: 10px;
 }
 
 .list li {
