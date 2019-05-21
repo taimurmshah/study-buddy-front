@@ -18,16 +18,20 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         sessions: action.payload
-        // currentSession: session,
-        // title: session.title,
-        // hours: session.hours,
-        // problems: session.problems,
-        // id: session.id
       };
     case "INCREMENT_PROBLEMS":
       return { ...state, problems: action.payload };
     case "ADD_TIME":
       return { ...state, hours: action.payload };
+    case "SELECT_SESSION":
+      return {
+        ...state,
+        currentSession: action.payload,
+        title: action.payload.title,
+        hours: action.payload.hours,
+        problems: action.payload.problems,
+        id: action.payload.id
+      };
     default:
       return state;
   }

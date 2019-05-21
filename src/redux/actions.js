@@ -18,3 +18,10 @@ export const addTime = time => {
     payload: time
   };
 };
+
+export const selectSession = id => {
+  return {
+    type: "SELECT_SESSION",
+    payload: id
+  };
+};

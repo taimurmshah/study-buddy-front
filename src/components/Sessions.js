@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { selectSession } from "../redux/actions";
 // import { withRouter } from "react-router-dom";
 
 class Sessions extends Component {
   clickHandler = e => {
-    console.log("here is the data-id:", e.target.dataset.id);
+    let id = parseInt(e.target.dataset.id);
+    let session = this.props.sessions.find(session => {
+      return session.id === id;
+    });
+    console.log("here's the session:", session);
+    this.props.selectSession(session);
   };
 
   render() {
@@ -31,7 +37,9 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    selectSession: session => dispatch(selectSession(session))
+  };
 };
 
 export default connect(
