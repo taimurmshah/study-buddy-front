@@ -6,7 +6,7 @@ import { patchHours } from "../redux/thunks";
 
 class Timer extends Component {
   componentDidMount() {
-    setInterval(() => this.setState({ time: (this.state.time += 1000) }), 1000);
+    setInterval(() => this.setState({ time: this.state.time + 1000 }), 1000);
   }
 
   componentWillUnmount() {

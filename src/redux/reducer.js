@@ -1,5 +1,5 @@
 const initialState = {
-  sessions: {},
+  sessions: [],
   currentSession: {},
   title: "",
   hours: 0,
@@ -11,15 +11,18 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "GET_SESSIONS":
-      let session = action.payload.find(session => session.title === "Test");
+      // let session = action.payload.find(
+      //   // session => session.title === "Interview Prep 2019"
+      //   session => session.title === "Test"
+      // );
       return {
         ...state,
-        sessions: action.payload,
-        currentSession: session,
-        title: session.title,
-        hours: session.hours,
-        problems: session.problems,
-        id: session.id
+        sessions: action.payload
+        // currentSession: session,
+        // title: session.title,
+        // hours: session.hours,
+        // problems: session.problems,
+        // id: session.id
       };
     case "INCREMENT_PROBLEMS":
       return { ...state, problems: action.payload };

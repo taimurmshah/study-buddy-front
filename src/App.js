@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import MainContainer from "./components/MainContainer";
+import Sessions from "./components/Sessions";
 import { fetchSessions } from "./redux/thunks";
+import "./App.css";
+// import { Switch } from "react-router-dom";
 
 class App extends Component {
   componentDidMount() {
@@ -11,7 +14,15 @@ class App extends Component {
   render() {
     return (
       <div>
-        <MainContainer />
+        {this.props.sessions.length > 0 ? (
+          Object.keys(this.props.currentSession).length > 0 ? (
+            <MainContainer />
+          ) : (
+            <Sessions />
+          )
+        ) : (
+          <h1>Loading</h1>
+        )}
       </div>
     );
   }
@@ -24,7 +35,10 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    currentSession: state.currentSession,
+    sessions: state.sessions
+  };
 };
 
 export default connect(

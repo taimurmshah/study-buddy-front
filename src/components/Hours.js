@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Timer from "./Timer";
 import { Button } from "semantic-ui-react";
 import formatDuration from "format-duration";
+import humanizeDuration from "humanize-duration";
 
 class Hours extends Component {
   state = {
