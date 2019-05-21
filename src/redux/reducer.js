@@ -1,8 +1,3 @@
-let today = new Date().toDateString().split(" ");
-today.shift();
-today[1] = today[1] + ",";
-let date = today.join(" ");
-
 const initialState = {
   sessions: [],
   currentSession: {},
@@ -11,9 +6,10 @@ const initialState = {
   job: false,
   problems: 0,
   id: null,
-  date: date,
+  date: "",
   days: [],
-  sessionToday: {}
+  sessionToday: {},
+  hoursToday: 0
 };
 
 const reducer = (state = initialState, action) => {
@@ -24,9 +20,17 @@ const reducer = (state = initialState, action) => {
         sessions: action.payload
       };
     case "INCREMENT_PROBLEMS":
-      return { ...state, problems: action.payload };
+      return {
+        ...state,
+        problems: action.payload.total,
+        problemsToday: action.payload.today
+      };
     case "ADD_TIME":
-      return { ...state, hours: action.payload };
+      return {
+        ...state,
+        hours: action.payload.hours,
+        hoursToday: action.payload.time_today
+      };
     case "SELECT_SESSION":
       return {
         ...state,
@@ -40,7 +44,9 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         days: action.payload,
-        date: action.payload[action.payload.length - 1].date
+        date: action.payload[action.payload.length - 1].date,
+        hoursToday: action.payload[action.payload.length - 1].time_studied,
+        problemsToday: action.payload[action.payload.length - 1].problems
       };
     default:
       return state;

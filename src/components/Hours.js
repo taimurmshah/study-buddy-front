@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Timer from "./Timer";
 import formatDuration from "format-duration";
+// eslint-disable-next-line
 import humanizeDuration from "humanize-duration";
 
 class Hours extends Component {
@@ -16,7 +17,8 @@ class Hours extends Component {
   render() {
     return (
       <div>
-        <h3>Time Spent Studying: {formatDuration(this.props.hours)}</h3>
+        <h3>Total Time Spent Studying: {formatDuration(this.props.hours)}</h3>
+        <h3>Amount Studied Today: {formatDuration(this.props.hoursToday)}</h3>
         {this.state.timer ? <Timer /> : <h4>0:00</h4>}
         <button onClick={this.buttonClick}>
           {!this.state.timer ? "Start" : "Stop"}
@@ -27,7 +29,8 @@ class Hours extends Component {
 }
 const mapStateToProps = state => {
   return {
-    hours: state.hours
+    hours: state.hours,
+    hoursToday: state.hoursToday
   };
 };
 

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import formatDuration from "format-duration";
-import { Button } from "semantic-ui-react";
 import { patchHours } from "../redux/thunks";
 
 class Timer extends Component {

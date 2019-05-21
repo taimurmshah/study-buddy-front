@@ -11,6 +11,7 @@ class Problems extends Component {
     return (
       <div>
         <h3>Number of Problems Completed: {this.props.problems} </h3>
+        <h3>Problems Completed Today: {this.props.problemsToday} </h3>
         <button onClick={this.buttonHandler}> +1</button>
       </div>
     );
@@ -20,7 +21,8 @@ class Problems extends Component {
 const mapStateToProps = state => {
   return {
     problems: state.problems,
-    id: state.id
+    id: state.id,
+    problemsToday: state.problemsToday
   };
 };
 

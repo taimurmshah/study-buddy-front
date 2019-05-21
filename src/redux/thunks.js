@@ -43,7 +43,6 @@ export const patchHours = (id, hours) => {
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         dispatch(addTime(res));
       });
   };

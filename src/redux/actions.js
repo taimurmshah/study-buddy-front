@@ -5,10 +5,10 @@ export const getSessions = sessions => {
   };
 };
 
-export const incrementProblems = number => {
+export const incrementProblems = object => {
   return {
     type: "INCREMENT_PROBLEMS",
-    payload: number
+    payload: object
   };
 };
 
