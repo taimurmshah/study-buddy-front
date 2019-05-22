@@ -4,12 +4,20 @@ import MainContainer from "./components/MainContainer";
 import Sessions from "./components/Sessions";
 import { fetchSessions } from "./redux/thunks";
 import "./App.css";
-// import { Switch } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 class App extends Component {
   componentDidMount() {
     this.props.fetchSessions();
   }
+
+  isSessionSelected = () => {
+    return !!Object.keys(this.props.currentSession).length > 0;
+  };
+
+  didFetchWork = () => {
+    return !!this.props.sessions.length > 0;
+  };
 
   render() {
     return (
@@ -20,15 +28,30 @@ class App extends Component {
           </div>
         </header>
 
-        {this.props.sessions.length > 0 ? (
-          Object.keys(this.props.currentSession).length > 0 ? (
-            <MainContainer />
-          ) : (
-            <Sessions />
-          )
-        ) : (
-          <h1>Loading</h1>
-        )}
+        <Switch>
+          <Route
+            path="/session"
+            render={() => {
+              return (
+                <div>
+                  {this.isSessionSelected() ? (
+                    <MainContainer />
+                  ) : (
+                    <Redirect to="/" />
+                  )}
+                </div>
+              );
+            }}
+          />
+          <Route
+            path="/"
+            render={() => {
+              return (
+                <div>{this.didFetchWork ? <Sessions /> : <h1>Loading</h1>}</div>
+              );
+            }}
+          />
+        </Switch>
       </div>
     );
   }

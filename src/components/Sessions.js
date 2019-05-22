@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { selectSession } from "../redux/actions";
-// import { withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { fetchDays } from "../redux/thunks";
 
 class Sessions extends Component {
@@ -12,6 +12,7 @@ class Sessions extends Component {
     });
     this.props.selectSession(session);
     this.props.fetchDays(id);
+    this.props.history.push("/session");
   };
 
   render() {
@@ -44,7 +45,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Sessions);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Sessions)
+);
