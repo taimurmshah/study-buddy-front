@@ -21,16 +21,22 @@ const reducer = (state = initialState, action) => {
         sessions: action.payload
       };
     case "INCREMENT_PROBLEMS":
+      let updatedDays = [...state.days];
+      updatedDays[updatedDays.length - 1].problems = action.payload.today;
       return {
         ...state,
         problems: action.payload.total,
-        problemsToday: action.payload.today
+        problemsToday: action.payload.today,
+        days: updatedDays
       };
     case "ADD_TIME":
+      let newDays = [...state.days];
+      newDays[newDays.length - 1].time_studied = action.payload.time_today;
       return {
         ...state,
         hours: action.payload.hours,
-        hoursToday: action.payload.time_today
+        hoursToday: action.payload.time_today,
+        days: newDays
       };
     case "SELECT_SESSION":
       return {

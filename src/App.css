@@ -1,9 +1,9 @@
 body {
-  background-image: url("./images/gravel.png");
+  background-image: url("./images/footer_lodyas.png");
   /* background-repeat: no-repeat; */
   background-attachment: fixed;
 
-  color: #555;
+  color: #c7c6c6;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   line-height: 1.6em;
@@ -52,4 +52,20 @@ body {
 
 .box3 {
   /* border: 1px black solid; */
+}
+
+#days {
+  display: grid;
+  grid-template-rows: auto;
+  grid-gap: 1em;
+  color: black;
+}
+
+#days li {
+  list-style: none;
+}
+
+#days .box {
+  /* border: black 1px dotted; */
+  background-image: url("./images/swirl_pattern.png");
 }

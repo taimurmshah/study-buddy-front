@@ -43,6 +43,7 @@ export const patchHours = (id, hours) => {
     })
       .then(res => res.json())
       .then(res => {
+        console.log(res);
         dispatch(addTime(res));
       });
   };
@@ -62,7 +63,6 @@ export const fetchDays = id => {
     })
       .then(res => res.json())
       .then(res => {
-        console.log("res:", res);
         dispatch(getDays(res));
       });
   };
