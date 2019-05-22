@@ -9,7 +9,8 @@ const initialState = {
   date: "",
   days: [],
   sessionToday: {},
-  hoursToday: 0
+  hoursToday: 0,
+  displayDate: ""
 };
 
 const reducer = (state = initialState, action) => {
@@ -41,10 +42,16 @@ const reducer = (state = initialState, action) => {
         id: action.payload.id
       };
     case "GET_DAYS":
+      let today = action.payload[action.payload.length - 1].date;
+      let date = today.split("-");
+      date.push(date.shift());
+      date[date.length - 1] = date[date.length - 1].substr(2);
+      date = date.join("/");
       return {
         ...state,
         days: action.payload,
-        date: action.payload[action.payload.length - 1].date,
+        date: today,
+        displayDate: date,
         hoursToday: action.payload[action.payload.length - 1].time_studied,
         problemsToday: action.payload[action.payload.length - 1].problems
       };

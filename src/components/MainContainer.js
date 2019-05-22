@@ -8,7 +8,7 @@ class MainContainer extends Component {
     return (
       <div>
         <h1>Welcome to {this.props.title}. Maintain intensity of focus.</h1>
-        <h3>Today's date: {this.props.date}</h3>
+        <h3>Today's date: {this.props.displayDate}</h3>
         <Hours />
         <Problems />
       </div>
@@ -19,7 +19,7 @@ class MainContainer extends Component {
 const mapStateToProps = state => {
   return {
     title: state.title,
-    date: state.date
+    displayDate: state.displayDate
   };
 };
 
