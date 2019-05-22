@@ -9,20 +9,47 @@ body {
   line-height: 1.6em;
 }
 
-.container {
-  width: 80%;
-  margin: auto;
-  overflow: hidden; /*the fuck does this do? "no scroll bars even if something goes outside of its container"*/
-}
-
 #main-header {
   background-image: url("./images/green_cup.png");
   color: #555;
   margin-bottom: 10px;
 }
 
+.container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden; /*the fuck does this do? "no scroll bars even if something goes outside of its container"*/
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .list li {
   list-style: none;
   padding-bottom: 10px;
   width: 20%;
+}
+
+.container p {
+  align-self: end;
+  grid-column: 2;
+  justify-self: end;
+}
+
+.main-page {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1em;
+}
+
+.box1 {
+  /* border: 1px black solid; */
+  grid-column: 1/3;
+}
+
+.box2 {
+  /* border: 1px black solid; */
+}
+
+.box3 {
+  /* border: 1px black solid; */
 }

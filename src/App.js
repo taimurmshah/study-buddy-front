@@ -25,6 +25,9 @@ class App extends Component {
         <header id="main-header">
           <div className="container">
             <h1>Study Buddy</h1>
+            {this.props.displayDate.length > 0 ? (
+              <p>{this.props.displayDate}</p>
+            ) : null}
           </div>
         </header>
 
@@ -66,7 +69,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     currentSession: state.currentSession,
-    sessions: state.sessions
+    sessions: state.sessions,
+    displayDate: state.displayDate
   };
 };
 

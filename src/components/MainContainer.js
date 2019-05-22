@@ -6,11 +6,16 @@ import Problems from "./Problems";
 class MainContainer extends Component {
   render() {
     return (
-      <div>
-        <h1>Welcome to {this.props.title}. Maintain intensity of focus.</h1>
-        <h3>Today's date: {this.props.displayDate}</h3>
-        <Hours />
-        <Problems />
+      <div className="main-page">
+        <div className="box1">
+          <h1>Welcome to {this.props.title}. Maintain intensity of focus.</h1>
+        </div>
+        <div className="box2">
+          <Hours />
+        </div>
+        <div className="box3">
+          <Problems />
+        </div>
       </div>
     );
   }

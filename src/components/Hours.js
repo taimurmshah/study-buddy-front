@@ -16,13 +16,15 @@ class Hours extends Component {
 
   render() {
     return (
-      <div>
+      <div id="test">
         <h3>Total Time Spent Studying: {formatDuration(this.props.hours)}</h3>
         <h3>Amount Studied Today: {formatDuration(this.props.hoursToday)}</h3>
-        {this.state.timer ? <Timer /> : <h4>0:00</h4>}
-        <button onClick={this.buttonClick}>
-          {!this.state.timer ? "Start" : "Stop"}
-        </button>
+        <div id="timer">
+          {this.state.timer ? <Timer /> : <h4>0:00</h4>}
+          <button onClick={this.buttonClick}>
+            {!this.state.timer ? "Start" : "Stop"}
+          </button>
+        </div>
       </div>
     );
   }
