@@ -54,18 +54,26 @@ body {
   /* border: 1px black solid; */
 }
 
-#days {
-  display: grid;
-  grid-template-rows: auto;
+#history {
   grid-gap: 1em;
   color: black;
+  /* border: coral 1px solid; */
 }
 
-#days li {
+#history li {
   list-style: none;
 }
 
-#days .box {
+#history .box {
   /* border: black 1px dotted; */
   background-image: url("./images/swirl_pattern.png");
+}
+
+.history-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+
+  margin: 50px;
+  grid-gap: 1em;
+  color: black;
 }

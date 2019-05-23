@@ -7,17 +7,20 @@ import History from "./History";
 class MainContainer extends Component {
   render() {
     return (
-      <div className="main-page">
-        <div className="box1">
-          <h1>Welcome to {this.props.title}. Maintain intensity of focus.</h1>
+      <div>
+        <div className="main-page">
+          <div className="box1">
+            <h1>Welcome to {this.props.title}. Maintain intensity of focus.</h1>
+          </div>
+          <div className="box2">
+            <Hours />
+          </div>
+          <div className="box3">
+            <Problems />
+          </div>
         </div>
-        <div className="box2">
-          <Hours />
-        </div>
-        <div className="box3">
-          <Problems />
-        </div>
-        <div className="box4">
+        <div id="history">
+          <h1>Study Log</h1>
           <History />
         </div>
       </div>

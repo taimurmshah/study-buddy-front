@@ -11,24 +11,17 @@ class History extends Component {
       today[today.length - 1] = today[today.length - 1].substr(2);
       today = today.join("/");
       return (
-        <li key={day.id} className="box">
-          <div>
-            <ul>
-              {today}:
-              <li>Time Spent Studying: {formatDuration(day.time_studied)}</li>
-              <li>Problems Completed: {day.problems}</li>
-            </ul>
-          </div>
-        </li>
+        <div key={day.id} className="box">
+          <ul>
+            {today}:
+            <li>Time Spent Studying: {formatDuration(day.time_studied)}</li>
+            <li>Problems Completed: {day.problems}</li>
+          </ul>
+        </div>
       );
     });
 
-    return (
-      <div>
-        <h1>Study Log</h1>
-        <ul id="days">{days}</ul>
-      </div>
-    );
+    return <div className="history-container">{days}</div>;
   }
 }
 
