@@ -32,3 +32,16 @@ export const getDays = days => {
     payload: days
   };
 };
+
+export const updateSessions = session => {
+  return {
+    type: "UPDATE_SESSIONS",
+    payload: session
+  };
+};
+
+export const clearSession = () => {
+  return {
+    type: "CLEAR_SESSION"
+  };
+};

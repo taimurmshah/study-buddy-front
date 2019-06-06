@@ -1,4 +1,10 @@
-import { getSessions, incrementProblems, addTime, getDays } from "./actions";
+import {
+  getSessions,
+  incrementProblems,
+  addTime,
+  getDays,
+  updateSessions
+} from "./actions";
 
 export const fetchSessions = () => {
   return dispatch => {
@@ -64,6 +70,26 @@ export const fetchDays = id => {
       .then(res => res.json())
       .then(res => {
         dispatch(getDays(res));
+      });
+  };
+};
+
+export const createSession = title => {
+  return dispatch => {
+    return fetch("http://localhost:3000/api/v1/sessions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        session: { title }
+      })
+    })
+      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+        dispatch(updateSessions(res));
       });
   };
 };

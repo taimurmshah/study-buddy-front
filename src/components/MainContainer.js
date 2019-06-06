@@ -3,8 +3,13 @@ import { connect } from "react-redux";
 import Hours from "./Hours";
 import Problems from "./Problems";
 import History from "./History";
+import { clearSession } from "../redux/actions";
 
 class MainContainer extends Component {
+  componentWillUnmount() {
+    this.props.clearSession();
+  }
+
   render() {
     return (
       <div>
@@ -35,4 +40,13 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(MainContainer);
+const mapDispatchToProps = dispatch => {
+  return {
+    clearSession: () => dispatch(clearSession())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MainContainer);

@@ -3,13 +3,14 @@ import { connect } from "react-redux";
 import MainContainer from "./components/MainContainer";
 import Sessions from "./components/Sessions";
 import NewSessionForm from "./components/NewSessionForm";
-import { fetchSessions } from "./redux/thunks";
+import { fetchSessions, createSession } from "./redux/thunks";
 import "./App.css";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 class App extends Component {
   state = {
-    sessionFormOpen: false
+    sessionFormOpen: false,
+    title: ""
   };
 
   componentDidMount() {
@@ -24,7 +25,22 @@ class App extends Component {
     return !!this.props.sessions.length > 0;
   };
 
+  submitHandler = e => {
+    e.preventDefault();
+    if (!this.state.title.length) {
+      alert("Please enter valid session title, bitch");
+    } else {
+      this.props.createSession(this.state.title);
+      this.setState({ sessionFormOpen: false });
+    }
+  };
+
+  changeHandler = e => {
+    this.setState({ title: e.target.value });
+  };
+
   render() {
+    console.log(Object.keys(this.props.currentSession).length);
     return (
       <div>
         <header id="main-header">
@@ -60,8 +76,13 @@ class App extends Component {
             }}
           />
         </Switch>
-        {this.state.sessionFormOpen ? (
-          <NewSessionForm />
+        {Object.keys(this.props.currentSession).length > 0 ? null : this.state
+            .sessionFormOpen ? (
+          <NewSessionForm
+            submitHandler={this.submitHandler}
+            title={this.state.title}
+            changeHandler={this.changeHandler}
+          />
         ) : (
           <button
             onClick={() => {
@@ -78,7 +99,10 @@ class App extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchSessions: () => dispatch(fetchSessions())
+    fetchSessions: () => dispatch(fetchSessions()),
+    createSession: title => {
+      dispatch(createSession(title));
+    }
   };
 };
 

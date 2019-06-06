@@ -2,14 +2,21 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 class NewSessionForm extends Component {
-  state = {
-    title: ""
-  };
-
   render() {
+    console.log(this.props);
+
     return (
       <div>
-        <h1>New Session Form</h1>
+        <form action="">
+          <p>Enter Session Title:</p>
+          <input
+            onChange={this.props.changeHandler}
+            type="text"
+            name="title"
+            value={this.props.title}
+          />
+          <button onClick={this.props.submitHandler}>Submit</button>
+        </form>
       </div>
     );
   }

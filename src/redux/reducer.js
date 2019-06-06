@@ -61,6 +61,18 @@ const reducer = (state = initialState, action) => {
         hoursToday: action.payload[action.payload.length - 1].time_studied,
         problemsToday: action.payload[action.payload.length - 1].problems
       };
+    case "UPDATE_SESSIONS":
+      let updatedSessions = [...state.sessions];
+      updatedSessions.push(action.payload);
+      return {
+        ...state,
+        sessions: updatedSessions
+      };
+    case "CLEAR_SESSION":
+      return {
+        ...state,
+        currentSession: {}
+      };
     default:
       return state;
   }
