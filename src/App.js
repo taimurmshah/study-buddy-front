@@ -2,11 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import MainContainer from "./components/MainContainer";
 import Sessions from "./components/Sessions";
+import NewSessionForm from "./components/NewSessionForm";
 import { fetchSessions } from "./redux/thunks";
 import "./App.css";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 class App extends Component {
+  state = {
+    sessionFormOpen: false
+  };
+
   componentDidMount() {
     this.props.fetchSessions();
   }
@@ -55,6 +60,17 @@ class App extends Component {
             }}
           />
         </Switch>
+        {this.state.sessionFormOpen ? (
+          <NewSessionForm />
+        ) : (
+          <button
+            onClick={() => {
+              this.setState({ sessionFormOpen: true });
+            }}
+          >
+            Create new session
+          </button>
+        )}
       </div>
     );
   }

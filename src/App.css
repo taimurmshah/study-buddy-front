@@ -60,6 +60,10 @@ body {
   /* border: coral 1px solid; */
 }
 
+#history ul {
+  padding-left: 10px;
+}
+
 #history li {
   list-style: none;
 }
